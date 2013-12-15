@@ -1,4 +1,2 @@
-CoreJS
+[CoreJS](http://corejs.github.io)
 ======
-
-CoreJS
