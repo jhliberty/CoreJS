@@ -1,0 +1,11 @@
+{
+  "name": "CoreJS",
+  "version": "0.0.0",
+  "homepage": "http://corejs.github.io",
+  "devDependencies": {},
+  "ignore": [
+    ".git",
+    ".idea"
+  ],
+  "license": "MIT"
+}
