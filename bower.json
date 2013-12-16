@@ -4,8 +4,15 @@
   "homepage": "http://corejs.github.io",
   "devDependencies": {},
   "ignore": [
+    ".bowerrc",
+    ".editorconfig",
     ".git",
-    ".idea"
+    ".idea",
+    ".jshintrc",
+    "Gruntfile.js",
+    "app",
+    "karma.conf.js",
+    "test"
   ],
   "license": "MIT"
 }
