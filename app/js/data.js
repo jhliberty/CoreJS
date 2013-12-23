@@ -223,8 +223,12 @@ module.exports = {
 };
 
 function c() {
+    var lines = Array.prototype.slice.call(arguments, 1);
+    for (var i = lines.length; i--;) {
+        lines[i] = lines[i].replace(/(\/\/.*)|(\/\*.*\*\/)/, '<span class="comment">$1$2</span>');
+    }
     return {
-        code: Array.prototype.slice.call(arguments, 1).join('\n'),
+        code: lines.join('\n'),
         file: arguments[0]
     };
 }

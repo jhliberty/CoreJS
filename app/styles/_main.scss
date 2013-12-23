@@ -1,7 +1,4 @@
-@import
-'vars',
-'reset',
-'sidebar';
+@import 'vars';
 
 body {
   font: 16px Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -45,6 +42,7 @@ $gap: 30px;
 
   b {
     background: $highlightColor;
+    color: #000;
   }
 
 /*
@@ -138,6 +136,10 @@ $size: 330px;
       border-bottom-color: #000;
       cursor: pointer;
     }
+  }
+
+  .comment {
+    color: #690;
   }
 }
 
