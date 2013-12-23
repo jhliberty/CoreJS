@@ -30,7 +30,7 @@ var MainView = View.extend({
                 'CoreJS solves problems that arise in&nbsp;every large web application:' +
                 '<ul>' +
                 '{{#items}}' +
-                    '<li>{{title}}</li>' +
+                    '<li><a href="#{{title}}">{{title}}</a></li>' +
                 '{{/items}}' +
                 '</ul>' +
             '</div>' +
