@@ -76,24 +76,21 @@ var DEV_MODE = true;
         registry = {};
     };
 
-    var wrapper = function (fn) {
-        if (_isArray(fn)) {
-            var injected = fn;
-            fn = fn.pop();
-        } else if (typeof fn !== 'function' || !Array.isArray(fn.$inject)) {
-            return fn;
-        }
+    var wrapper = function (ia) {
+        if (!isInjectorArray(ia)) return ia;
+
+        var fn = ia.pop();
 
         return function () {
-            var dependencies = new Array(injected.length);
+            var dependencies = new Array(ia.length);
             for (var i = dependencies.length; i--;) {
-                dependencies[i] = registry[ injected[i] ];
+                dependencies[i] = registry[ ia[i] ];
             }
             return fn.apply(this, dependencies.concat(slice.call(arguments)));
         };
     };
 
-    var _isArray = function (a) {
+    var isInjectorArray = function (a) {
         if (!Array.isArray(a) || a.length < 2 || typeof a[a.length - 1] !== 'function') return false;
         for (var i = a.length - 1; i--;) {
             if (typeof a[i] !== 'string') return false;

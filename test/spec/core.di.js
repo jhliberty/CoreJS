@@ -41,7 +41,7 @@ describe('Dependency Injection', function () {
     });
 });
 
-describe('Injection array detection', function () {
+describe('Injector Array detection', function () {
     it('should detect a proper array', function () {
         var fn = function () {
             },
