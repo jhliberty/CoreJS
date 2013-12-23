@@ -6,7 +6,10 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
-        // configurable paths
+        CoreJS: {
+            deploy: '../../Dropbox/Public/corejs.github.io', // change to your deploy path
+            jsBuild: '_build.js'
+        },
         yeoman: {
             app: 'app',
             dist: 'dist'
@@ -124,6 +127,12 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     debugInfo: true
+                }
+            },
+            deploy: {
+                options: {
+                    cssDir: '<%= CoreJS.deploy %>/css',
+                    outputStyle: 'compressed'
                 }
             }
         },
@@ -250,6 +259,12 @@ module.exports = function (grunt) {
                 cwd: '<%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            deploy_js: {
+                cwd: '<%= yeoman.app %>/js',
+                src: '<%= CoreJS.jsBuild %>',
+                dest: '<%= CoreJS.deploy %>/js',
+                expand: true
             }
         },
         concurrent: {
@@ -270,10 +285,10 @@ module.exports = function (grunt) {
         },
         'commonjs-compiler': {
             main: {
-                cwd         : 'app/js',
+                cwd         : '<%= yeoman.app %>/js',
                 compilerPath: '../..',
                 entryModule : 'main.js',
-                output      : '_build.js',
+                output      : '<%= CoreJS.jsBuild %>',
                 externs     : ['externs/jquery.js'],
                 define      : 'DEV_MODE$$module$core=false'
             }
@@ -328,5 +343,11 @@ module.exports = function (grunt) {
     grunt.registerTask('compile', function(){
         grunt.task.run('commonjs-compiler');
     });
+
+    grunt.registerTask('deploy', function(){
+        grunt.task.run('compass:deploy');
+        grunt.task.run('compile');
+        grunt.task.run('copy:deploy_js');
+    })
 
 };
