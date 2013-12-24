@@ -41,7 +41,7 @@ module.exports = {
         },
         {
             title: 'Code Reuse',
-            'desc': 'You might have heard about <a target="_blank" href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself">DRY principle</a> and <a target="_blank" href="http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)">inheritance</a> as one of the ways to be DRY. There are several ways to do inheritance in JavaScript.',
+            'desc': 'You might have heard about ' + a('http://en.wikipedia.org/wiki/Don%27t_repeat_yourself', 'DRY principle') + ' and ' + a('http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)', 'inheritance') + ' as one of the ways to be DRY. There are several ways to do inheritance in JavaScript.',
             items: [
                 {
                     title: 'Inheritance',
@@ -103,7 +103,7 @@ module.exports = {
         },
         {
             title: 'Components Wiring',
-            'desc':  'There are many articles telling you why wiring up the components through the <a target="_blank" href="http://www.yuiblog.com/blog/2006/06/01/global-domination/">global scope</a> is bad, but <a target="_blank" href="http://blog.millermedeiros.com/namespaces-are-old-school/">namespaces</a> are <a target="_blank" href="http://weblogs.asp.net/bleroy/archive/2012/09/03/namespaces-are-obsolete.aspx">evil</a> too. If you have something like <span class="pre">app.header.menu.update()</span>, most probably you are doing something wrong. So, how are we going to wire up the components together? One of the solutions is Dependency Injection.',
+            'desc':  'There are many articles telling you why wiring up the components through the ' + a('http://www.yuiblog.com/blog/2006/06/01/global-domination/', 'global scope') + ' is bad, but ' + a('http://blog.millermedeiros.com/namespaces-are-old-school/', 'namespaces') + ' are ' + a('http://weblogs.asp.net/bleroy/archive/2012/09/03/namespaces-are-obsolete.aspx', 'evil') + ' too. If you have something like <span class="pre">app.header.menu.update()</span>, most probably you are doing something wrong. So, how are we going to wire up the components together? One of the solutions is Dependency Injection.',
             items: [
                 {
                     title: 'Dependency Injection',
@@ -121,7 +121,7 @@ module.exports = {
                         c(0,
                             '// Model inherits from Core',
                             'var Model = <b>Core.extend</b>({',
-                            '    method: <i title="Injector Array tells the Dependency Injector to inject dependency \'dep\' as parameter \'d\'">[\'dep\',</i> function (d) {',
+                            '    method: ' + t('Injector Array tells the Dependency Injector to inject dependency \'dep\' as parameter \'d\'', '[\'dep\',') + ' function (d) {',
                             '        console.log(d); // will output [\'dependency\', \'example\']',
                             '    }]',
                             '});'
@@ -130,7 +130,7 @@ module.exports = {
                         'To inject dependencies into a function, pass an <b>Injector Array</b> to Core.',
                         c(0,
                             '// Core(injector_array) returns a function with injected dependencies',
-                            'var f = Core(<i title="Injector Array tells the Dependency Injector to inject dependencies:<br/>\'dep1\' as d1 parameter<br/>\'dep2\' as d2 parameter">[\'dep1\', \'dep2\', function(d1, d2) {}]</i>);'
+                            'var f = Core(' + t('Injector Array tells the Dependency Injector to inject dependencies:<br/>\'dep1\' as d1 parameter<br/>\'dep2\' as d2 parameter', '[\'dep1\', \'dep2\', function(d1, d2) {}]') + ');'
                             ),
                         'And you can get dependencies directly as well.',
                         'To get a registered dependency, pass its name to Core:',
@@ -183,19 +183,19 @@ module.exports = {
                 'var Core = require(\'core\'),',
                 '    Router = require(\'router\'),',
                 '    Sidebar = require(\'sidebar\');\n',
-                'Core.<i title="registering an instance of Router component as \'router\'">register(\'router\', new Router)</i>;',
-                'Core.<i title="registering an array as \'menu\'">register(\'menu\', [1, 2, 3])</i>;',
+                'Core.' + t('registering an instance of Router component as \'router\'', 'register(\'router\', new Router)') + ';',
+                'Core.' + t('registering an array as \'menu\'', 'register(\'menu\', [1, 2, 3])') + ';',
                 'new Sidebar({$container: $(\'#sidebar\')});'
             ),
             'Note that there is no need to wrap the Injector Arrays into a Core() call, this is done automagically:',
             c('sidebar.js',
                 'var View = require(\'view\');\n',
                 'var Sidebar = View.extend({\n',
-                '    <i title="overriding parent constructor">constructor</i>: <i title="Injector Array tells the Dependency Injector to inject \'router\' into this function">[\'router\', function</i> (<i title="dependency \'router\', an instance of Router would be injected here">router</i>, options) {',
-                '        <i title="super call">View.call</i>(this, options);',
-                '        <i title="instance of Router component">router</i>.on(\'route\', this.update, this);',
+                '    ' + t('overriding parent constructor', 'constructor') + ': ' + t('Injector Array tells the Dependency Injector to inject \'router\' into this function', '[\'router\', function') + ' (' + t('dependency \'router\', an instance of Router would be injected here', 'router') + ', options) {',
+                '        ' + t('super call', 'View.call') + '(this, options);',
+                '        ' + t('instance of Router component', 'router') + '.on(\'route\', this.update, this);',
                 '    }],\n',
-                '    <i title="overriding parent .update() method">update</i>: <i title="Injector Array tells the Dependency Injector to inject \'menu\' into this function">[\'menu\',</i> <i title="parent .update() method as the function to inject into">View.prototype.update</i>],\n',
+                '    ' + t('overriding parent .update() method', 'update') + ': ' + t('Injector Array tells the Dependency Injector to inject \'menu\' into this function', '[\'menu\',') + ' ' + t('parent .update() method as the function to inject into', 'View.prototype.update') + '],\n',
                 '    template: \'&lt;ul>{{#items}}&lt;li>{{.}}&lt;/li>{{/items}}&lt;/ul>\'\n',
                 '});\n',
                 'module.exports = Sidebar;'
@@ -210,7 +210,7 @@ module.exports = {
 
     'conclusion': [
         'CoreJS is under active development, so come back later to see more',
-        'However, if you already like it, <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread the word</a>'
+        'However, if you already like it, feel free to <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread the word</a>'
     ]/*,
 
     features: [
@@ -231,4 +231,12 @@ function c() {
         code: lines.join('\n'),
         file: arguments[0]
     };
+}
+
+function t(tooltip, text) {
+    return '<i title="' + tooltip + '">' + text + '</i>';
+}
+
+function a(href, text) {
+    return '<a target="_blank" href="' + href + '">' + text +'</a>';
 }
