@@ -122,7 +122,7 @@ var DEV_MODE = true;
                     try {
                         eval('(function (module, exports) { ' +
                             xhr.responseText +
-                            '\n})(mod, mod.exports);//@ sourceURL=' + location.origin + '/' + path);
+                        '\n})(mod, mod.exports);//@ sourceURL=' + location.origin + '/' + path);
                     } catch (e) {
                         console.error('Error in module ' + path + ': ', e, e.stack);
                     }
