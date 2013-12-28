@@ -63,9 +63,10 @@ $gap: 30px;
   }*/
 }
 
-$size: 330px;
+$size: 250px;
 #logoSquare {
-  background: url(../i/logo.png) no-repeat;
+  background: url(../i/logo.svg) no-repeat;
+  background-size: 100%;
   width: $size;
   height: $size;
   margin: 0 auto;
@@ -79,25 +80,77 @@ $size: 330px;
 }
 
 #logo {
-  background: url(../i/core.png) no-repeat;
+  background: url(../i/core.svg) no-repeat;
+  background-size: 100%;
   width: $size;
-  height: 80px;
-  margin: 20px auto 30px;
+  height: 60px;
+  margin: 20px auto 10px;
 }
 
 #overview {
-  font-size: 1.2em;
+  @extend .clearfix;
   font-weight: 200;
-  width: $size;
-  margin: 0 auto 200px;
+  background: $highlightBg;
+  background: linear-gradient(45deg, saturate($highlightColor, 100%) 10%, $highlightBg 100%);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  padding: $gap 0;
 
-  ul {
-    list-style-type: disc;
-    margin: 10px 0 0 30px;
+  .desc {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: .9em;
+  }
+
+  p {
+    padding: 0 10px;
+  }
+
+  li {
+    float: left;
+    width: 27.33%;
+    margin: 20px 1%;
+    padding: 10px 2%;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .5);
   }
 
   a {
+    $pull: 50px;
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: 1.2em;
     text-decoration: none;
+    display: inline-block;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: $size;
+    margin-top: $pull;
+
+    &:hover {
+      opacity: .8;
+    }
+
+    span {
+      position: relative;
+      top: -$pull;
+    }
+  }
+
+  .oModularity {
+    background-image: url(../i/modularity.svg);
+  }
+
+  .oCode_Reuse {
+    background-image: url(../i/reuse.svg);
+  }
+
+  .oComponents_Wiring {
+    background-image: url(../i/wiring.svg);
   }
 }
 
@@ -150,6 +203,7 @@ $size: 330px;
   max-width: 300px;
   padding: 5px 10px;
   border-radius: 5px;
+  position: absolute;
 
   &:before {
     content: '';
@@ -200,6 +254,7 @@ $size: 330px;
 
 .gh {
   position: absolute;
+  z-index: 1;
   top: 0;
   right: 0;
   border: 0;
@@ -230,18 +285,21 @@ $size: 330px;
 
   #overview {
     width: auto;
+
+    a {
+      font-size: 1em;
+      height: 100px;
+    }
   }
 
-  $size: 240px;
+  $size: 200px;
   #logoSquare {
     width: $size;
     height: $size;
-    background-size: $size;
   }
 
   #logo {
     width: $size;
-    background-size: $size;
   }
 
   .action {

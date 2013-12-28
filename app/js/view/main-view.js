@@ -1,5 +1,5 @@
-var View     = require('view'),
-    Tooltip  = require('view/tooltip');
+var View    = require('view'),
+    Tooltip = require('view/tooltip');
 
 var sub =
 '{{#file}}<span class="file">{{file}}</span>{{/file}}' +
@@ -23,23 +23,25 @@ var MainView = View.extend({
 
     template:
         '<div id="sidebar"></div>' +
-        '<div id="main">' +
+        '<div id="overview">' +
             '<div id="logoSquare"></div>' +
             '<div id="logo"></div>' +
-            '<div id="overview">' +
-                'CoreJS solves problems that arise in&nbsp;every large web application:' +
-                '<ul>' +
-                '{{#items}}' +
-                    '<li><a href="#{{title}}">{{title}}</a></li>' +
-                '{{/items}}' +
-                '</ul>' +
-            '</div>' +
-
+            '<p class="desc">Modular JavaScript Framework</p>' +
+            '<p>CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
+            '<ul>' +
             '{{#items}}' +
-                '<h2 id="{{title}}">{{title}}</h2>' +
+                '<li>' +
+                    '<a href="#{{id}}" class="o{{id}}"><span>{{title}}</span></a>' +
+                '</li>' +
+            '{{/items}}' +
+            '</ul>' +
+        '</div>' +
+        '<div id="main">' +
+            '{{#items}}' +
+                '<h2 id="{{id}}">{{title}}</h2>' +
                 '{{{desc}}}' +
                 '{{#items}}' +
-                    '<h3 id="{{title}}">{{title}}</h3>' +
+                    '<h3 id="{{id}}">{{title}}</h3>' +
                     '{{#items}}' +
                         sub +
                     '{{/items}}' +
@@ -47,7 +49,7 @@ var MainView = View.extend({
             '{{/items}}' +
 
             '{{#combined}}' +
-                '<h2 id="{{title}}">{{title}}</h2>' +
+                '<h2 id="{{id}}">{{title}}</h2>' +
                 '{{#items}}' + sub + '{{/items}}' +
             '{{/combined}}' +
 

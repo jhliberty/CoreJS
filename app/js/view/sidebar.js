@@ -28,15 +28,15 @@ var Sidebar = View.extend({
         '<a href="#" class="logo"></a>' +
         '{{#items}}' +
         '<div class="s">' +
-            '<h4><a href="#{{title}}">{{title}}</a></h4>' +
+            '<h4><a href="#{{id}}">{{title}}</a></h4>' +
             '<ul>' +
-                '{{#items}}<li><a href="#{{title}}">{{title}}</a></li>{{/items}}' +
+                '{{#items}}<li><a href="#{{id}}">{{title}}</a></li>{{/items}}' +
             '</ul>' +
         '</div>' +
         '{{/items}}' +
         '{{#combined}}' +
         '<div class="s">' +
-            '<h4><a href="#{{title}}">{{title}}</a></h4>' +
+            '<h4><a href="#{{id}}">{{title}}</a></h4>' +
         '</div>' +
         '{{/combined}}' +
         '<div id="share"><p>Spread the word!</p></div>'

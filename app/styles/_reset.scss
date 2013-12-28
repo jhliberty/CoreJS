@@ -45,3 +45,24 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/**
+ * Clearfix
+ */
+
+.clearfix {
+  display: inline-block;
+
+  &:after {
+    content: '.';
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+
+  * html & {
+    height: 1%;
+  }
+}
