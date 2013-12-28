@@ -1,4 +1,5 @@
-var Core = require('core');
+var Core = require('core'),
+    slice = Array.prototype.slice;
 
 var Events = Core.extend({
 
@@ -54,7 +55,7 @@ var Events = Core.extend({
     trigger: function (eventName) {
         var calls = this._events,
             list = calls[eventName] || (calls[eventName] = []),
-            args = Array.prototype.slice.call(arguments, 1),
+            args = slice.call(arguments, 1),
             res = [];
 
         for (var i = 0, length = list.length; i < length; ++i) {

@@ -40,7 +40,7 @@ var DEV_MODE = true;
             proto = proto.prototype;
         } else {
             if (proto.constructor === Object) { // no constructor specified
-                proto.constructor = function(){ parent.apply(this, arguments) };
+                proto.constructor = function () { parent.apply(this, arguments) };
             }
             child = wrapper(proto.constructor);
         }
@@ -117,7 +117,7 @@ var DEV_MODE = true;
                 xhr.open('GET', path, false);
                 xhr.send();
 
-                if (xhr.status === 200) {
+                if (xhr.status === 200 || xhr.status === 0) { // 0- for local files. E.g. Cordova/Phonegap etc.
                     mod = {exports: {}};
                     try {
                         eval('(function (module, exports) { ' +

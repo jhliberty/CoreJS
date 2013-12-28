@@ -2,10 +2,10 @@ var Events = require('events');
 
 var Router = Events.extend({
 
-    constructor: function Router () {
+    constructor: function Router() {
         Events.call(this);
         this.onChange = this.onChange.bind(this);
-        window.addEventListener('hashchange', this.onChange);
+        window.addEventListener('hashchange', this.onChange, false);
         setTimeout(this.onChange, 0);
     },
 

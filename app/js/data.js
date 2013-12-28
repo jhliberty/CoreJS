@@ -103,7 +103,7 @@ module.exports = {
         },
         {
             title: 'Components Wiring',
-            'desc':  'There are many articles telling you why wiring up the components through the ' + a('http://www.yuiblog.com/blog/2006/06/01/global-domination/', 'global scope') + ' is bad, but ' + a('http://blog.millermedeiros.com/namespaces-are-old-school/', 'namespaces') + ' are ' + a('http://weblogs.asp.net/bleroy/archive/2012/09/03/namespaces-are-obsolete.aspx', 'evil') + ' too. If you have something like <span class="pre">app.header.menu.update()</span>, most probably you are doing something wrong. So, how are we going to wire up the components together? One of the solutions is Dependency Injection.',
+            'desc': 'There are many articles telling you why wiring up the components through the ' + a('http://www.yuiblog.com/blog/2006/06/01/global-domination/', 'global scope') + ' is bad, but ' + a('http://blog.millermedeiros.com/namespaces-are-old-school/', 'namespaces') + ' are ' + a('http://weblogs.asp.net/bleroy/archive/2012/09/03/namespaces-are-obsolete.aspx', 'evil') + ' too. If you have something like <span class="pre">app.header.menu.update()</span>, most probably you are doing something wrong. So, how are we going to wire up the components together? One of the solutions is Dependency Injection.',
             items: [
                 {
                     title: 'Dependency Injection',
@@ -114,7 +114,7 @@ module.exports = {
                             'Core.register(\'dep\', [\'dependency\', \'example\']);\n',
                             'Core(\'dep\', [\'dependency\', \'example\']); // same as above'
                         ),
-                        'Every component inherited from Core has the .register() method as well. For example, View being a child of Core can register dependencies as well:', 
+                        'Every component inherited from Core has the .register() method as well. For example, View being a child of Core can register dependencies as well:',
                         c(0, 'View.register(\'dep\', [1, 2, 3]); // same as Core.register(\'dep\', [1, 2, 3]);'),
                         'To inject dependencies into a method (when inheriting from Core or any child of Core), specify an <b>Injector Array</b> as any method.',
                         '<b>Injector Array</b> is any array which elements are strings, except the last element, a function to inject dependencies into:',
@@ -131,7 +131,7 @@ module.exports = {
                         c(0,
                             '// Core(injector_array) returns a function with injected dependencies',
                             'var f = Core(' + t('Injector Array tells the Dependency Injector to inject dependencies:<br/>\'dep1\' as d1 parameter<br/>\'dep2\' as d2 parameter', '[\'dep1\', \'dep2\', function(d1, d2) {}]') + ');'
-                            ),
+                        ),
                         'And you can get dependencies directly as well.',
                         'To get a registered dependency, pass its name to Core:',
                         c(0, 'var d = Core(\'dep\'); // returns resolved dependency, [\'dependency\', \'example\']'),
@@ -211,7 +211,7 @@ module.exports = {
     'conclusion': [
         'CoreJS is under active development, so come back later to see more',
         'However, if you already like it, feel free to <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread the word</a>'
-    ],/*
+    ], /*
 
     features: [
         'Small size: 1.3 kB gzipped',// of compiled production build/core
@@ -225,8 +225,10 @@ module.exports = {
     }
 };
 
+var slice = Array.prototype.slice;
+
 function c() {
-    var lines = Array.prototype.slice.call(arguments, 1);
+    var lines = slice.call(arguments, 1);
     for (var i = lines.length; i--;) {
         lines[i] = lines[i].replace(/(\/\/.*)|(\/\*.*\*\/)/, '<span class="comment">$1$2</span>');
     }
@@ -241,5 +243,5 @@ function t(tooltip, text) {
 }
 
 function a(href, text) {
-    return '<a target="_blank" href="' + href + '">' + text +'</a>';
+    return '<a target="_blank" href="' + href + '">' + text + '</a>';
 }
