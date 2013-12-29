@@ -100,7 +100,7 @@ var DEV_MODE = true;
 
     if (DEV_MODE) {
         var script = document.scripts[document.scripts.length - 1],
-            src = script.dataset && script.dataset.main || script.getAttribute('data-main'),
+            src = script.dataset ? script.dataset.main : script.getAttribute('data-main'),
             path = /(?:(.*\/))?(.*)/.exec(src),
             baseUrl = path[1] || '/',
             jsRe = /.js$/,
@@ -117,7 +117,7 @@ var DEV_MODE = true;
                 xhr.open('GET', path, false);
                 xhr.send();
 
-                if (xhr.status === 200 || xhr.status === 0) { // 0- for local files. E.g. Cordova/Phonegap etc.
+                if (xhr.status === 200 || xhr.status === 0) { // 0: local files (Cordova / Phonegap etc.)
                     mod = {exports: {}};
                     try {
                         eval('(function (module, exports) { ' +

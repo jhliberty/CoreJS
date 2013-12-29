@@ -1,3 +1,5 @@
+var slice = Array.prototype.slice;
+
 module.exports = {
     items: [
         {
@@ -210,7 +212,7 @@ module.exports = {
 
     'conclusion': [
         'CoreJS is under active development, so come back later to see more',
-        'However, if you already like it, feel free to <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread the word</a>'
+        'However, if you already like it, feel free to <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread&nbsp;the&nbsp;word</a>'
     ], /*
 
     features: [
@@ -224,8 +226,6 @@ module.exports = {
         return this.title.replace(/\s+/g, '_');
     }
 };
-
-var slice = Array.prototype.slice;
 
 function c() {
     var lines = slice.call(arguments, 1);

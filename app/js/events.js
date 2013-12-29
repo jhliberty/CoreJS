@@ -10,7 +10,7 @@ var Events = Core.extend({
 
     on: function on(eventName, data, callback, context) {
         if (~eventName.indexOf(' ')) {
-            var args = Array.prototype.slice.call(arguments),
+            var args = slice.call(arguments),
                 events = eventName.split(' ');
             for (var i = 0; i < events.length; ++i) {
                 args[0] = events[i];
