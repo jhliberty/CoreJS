@@ -10,7 +10,7 @@ var View = Events.extend({
     },
 
     update: ['tpl', function(tpl, model, template) {
-        this.$container.html(tpl(template || this.template, model));
+        this.$container.html(tpl(template || this.template, model, this.partial));
     }]
 
 });

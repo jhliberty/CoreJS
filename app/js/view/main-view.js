@@ -1,11 +1,6 @@
 var View    = require('view'),
     Tooltip = require('view/tooltip');
 
-var sub =
-'{{#file}}<span class="file">{{file}}</span>{{/file}}' +
-'{{#code}}<div class="pre">{{{code}}}</div>{{/code}}' +
-'{{^code}}<div>{{{.}}}</div>{{/code}}';
-
 var MainView = View.extend({
 
     constructor: function () {
@@ -42,15 +37,13 @@ var MainView = View.extend({
                 '{{{desc}}}' +
                 '{{#items}}' +
                     '<h3 id="{{id}}">{{title}}</h3>' +
-                    '{{#items}}' +
-                        sub +
-                    '{{/items}}' +
+                    '{{>items}}' +
                 '{{/items}}' +
             '{{/items}}' +
 
             '{{#combined}}' +
                 '<h2 id="{{id}}">{{title}}</h2>' +
-                '{{#items}}' + sub + '{{/items}}' +
+                '{{>items}}' +
             '{{/combined}}' +
 
             '<div class="conclusion">' +
@@ -59,7 +52,16 @@ var MainView = View.extend({
             '{{/conclusion}}' +
             '</div>' +
         '</div>' +
-        '<a href="https://github.com/CoreJS" class="gh" title="Fork me on GitHub">'
+        '<a href="https://github.com/CoreJS" class="gh" title="Fork me on GitHub">',
+
+    partial: {
+        items:
+            '{{#items}}' +
+                '{{#file}}<span class="file">{{file}}</span>{{/file}}' +
+                '{{#code}}<div class="pre">{{{code}}}</div>{{/code}}' +
+                '{{^code}}<div>{{{.}}}</div>{{/code}}' +
+            '{{/items}}'
+    }
 
 });
 
