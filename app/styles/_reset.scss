@@ -51,18 +51,15 @@ table {
  */
 
 .clearfix {
-  display: inline-block;
+  *zoom: 1;
 
+  &:before,
   &:after {
-    content: '.';
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
+    content: ' ';
+    display: table;
   }
 
-  * html & {
-    height: 1%;
+  &:after {
+    clear: both;
   }
 }
