@@ -66,6 +66,7 @@ var DEV_MODE = true;
 
     Core.register = function (name, entity) {
         registry[name] = entity;
+        return this;
     };
 
     Core.unregister = function (name) {
