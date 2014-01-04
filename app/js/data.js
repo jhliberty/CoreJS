@@ -213,14 +213,13 @@ module.exports = {
     'conclusion': [
         'CoreJS is under active development, so come back later to see more',
         'However, if you already like it, feel free to <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread&nbsp;the&nbsp;word</a>'
-    ], /*
+    ],
 
     features: [
-        'Small size: 1.3 kB gzipped',// of compiled production build/core
-        'No dependencies'
-        // CoreJS itself has none. However, some of the components do.
-        // View depends on any library that implements jQuery interface (jQuery, Zepto, jQlite)
-    ]*/
+        'extensible',
+        'lightweight', // 1.3 kB gzipped',// of compiled production build/core
+        'no dependencies'
+    ],
 
     id: function () {
         return this.title.replace(/\s+/g, '_');

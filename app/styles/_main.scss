@@ -84,7 +84,7 @@ $size: 250px;
   background-size: 100%;
   width: $size;
   height: 60px;
-  margin: 20px auto 10px;
+  margin: 10px auto;
 }
 
 #overview {
@@ -98,13 +98,19 @@ $size: 250px;
   text-align: center;
   padding: $gap 0;
 
-  .desc {
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-size: .9em;
+  .col {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    line-height: 20px;
+    margin: 0 10px 100px;
   }
 
-  p {
+  .desc {
+    margin-top: 65px;
+  }
+
+  .pr {
     padding: 0 10px;
   }
 
@@ -285,6 +291,10 @@ $size: 250px;
 
   #overview {
     width: auto;
+
+    .col:first-child {
+      margin-bottom: 0;
+    }
 
     a {
       font-size: 1em;

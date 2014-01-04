@@ -19,10 +19,15 @@ var MainView = View.extend({
     template:
         '<div id="sidebar"></div>' +
         '<div id="overview">' +
-            '<div id="logoSquare"></div>' +
-            '<div id="logo"></div>' +
-            '<p class="desc">Modular JavaScript Framework</p>' +
-            '<p>CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
+            '<div class="col">' +
+                '<div id="logoSquare"></div>' +
+            '</div>' +
+            '<div class="col">' +
+                '<p class="desc">Modular JavaScript Framework</p>' +
+                '<div id="logo"></div>' +
+                '{{#features}}<p>{{.}}</p>{{/features}}' +
+            '</div>' +
+            '<p class="pr">CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
             '<ul>' +
             '{{#items}}' +
                 '<li>' +
