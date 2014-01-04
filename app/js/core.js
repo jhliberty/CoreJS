@@ -58,6 +58,8 @@ var DEV_MODE = true;
 
         child.extend = parent.extend;
         child.register = parent.register;
+        child.unregister = parent.unregister;
+        child.reset = parent.reset;
 
         child.prototype.constructor = child;
         child.superclass = parent.prototype;

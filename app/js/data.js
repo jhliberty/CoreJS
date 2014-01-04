@@ -143,8 +143,8 @@ module.exports = {
                         'To un-register a dependency, pass its name to Core.unregister():',
                         c(0, 'Core.unregister(\'dep\'); // un-registers a dependency'),
                         'To un-register all dependencies, call Core.reset():',
-                        c(0, 'Core.reset(); // un-registers all dependencies')
-                        /*TODO and unregister /?\ and reset*/
+                        c(0, 'Core.reset(); // un-registers all dependencies'),
+                        'Any child of Core has <span class="pre">.unregister()</span> and <span class="pre">.reset()</span> methods as well.'
                     ]
                 },
                 {
