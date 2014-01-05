@@ -215,7 +215,7 @@ module.exports = {
         'However, if you already like it, feel free to <a href="http://indamix.github.io/">contact me</a> or <a class="spread">spread&nbsp;the&nbsp;word</a>'
     ],
 
-    features: [
+    'features': [
         'extensible',
         'lightweight', // 1.3 kB gzipped',// of compiled production build/core
         'no dependencies'
