@@ -41,24 +41,6 @@ var MainView = View.extend({
         '<div class="container">' +
             '<div class="wrapper">' +
                 '<div id="sidebar"></div>' +
-/*              '<div id="overview">' +
-                    '<div class="col">' +
-                        '<div id="logoSquare"></div>' +
-                    '</div>' +
-                    '<div class="col">' +
-                        '<p class="desc">Modular JavaScript Framework</p>' +
-                        '<div id="logo"></div>' +
-                        '{{#features}}<p>{{.}}</p>{{/features}}' +
-                    '</div>' +
-                    '<p class="pr">CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
-                    '<ul>' +
-                    '{{#items}}' +
-                        '<li>' +
-                            '<a href="#{{id}}" class="o{{id}}"><span>{{title}}</span></a>' +
-                        '</li>' +
-                    '{{/items}}' +
-                    '</ul>' +
-                '</div>' +*/
                 '<span class="toggleBtn"></span>' +
                 '<div id="content"></div>' +
             '</div>' +

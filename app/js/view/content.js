@@ -17,6 +17,24 @@ var MainView = View.extend({
     update: ['model', View.prototype.update],
 
     template:
+         '<div id="overview">' +
+            '<div class="col">' +
+                '<div id="logoSquare"></div>' +
+            '</div>' +
+            '<div class="col">' +
+                '<p class="desc">Modular JavaScript Framework</p>' +
+                '<div id="logo"></div>' +
+                '{{#features}}<p>{{.}}</p>{{/features}}' +
+            '</div>' +
+            '<p class="pr">CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
+            '<ul>' +
+            '{{#items}}' +
+                '<li>' +
+                    '<a href="#{{id}}" class="o{{id}}"><span>{{title}}</span></a>' +
+                '</li>' +
+            '{{/items}}' +
+            '</ul>' +
+        '</div>' +
         '<a href="https://github.com/CoreJS" class="gh" title="Fork me on GitHub"></a>' +
         '{{#items}}' +
             '<h2 id="{{id}}">{{title}}</h2>' +

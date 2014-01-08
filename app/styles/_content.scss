@@ -92,10 +92,8 @@ $size: 250px;
   font-weight: 200;
   background: $highlightBg;
   background: linear-gradient(45deg, saturate($highlightColor, 100%) 10%, $highlightBg 100%);
-  position: relative;
-  z-index: 1;
-  width: 100%;
   text-align: center;
+  margin: -$gap;
   padding: $gap 0;
 
   .col {
@@ -116,7 +114,7 @@ $size: 250px;
 
   li {
     float: left;
-    width: 27.33%;
+    width: 31.33%;
     margin: 20px 1%;
     padding: 10px 2%;
     border-radius: 10px;
@@ -271,9 +269,9 @@ $size: 250px;
 }
 
 @media only screen and (max-device-width: 480px) {
-  #content {
-    $gap: 10px;
+  $gap: 10px;
 
+  #content {
     margin-left: 0;
     padding: $gap;
 
@@ -290,7 +288,7 @@ $size: 250px;
   }
 
   #overview {
-    width: auto;
+    margin: -$gap;
 
     .col:first-child {
       margin-bottom: 0;
