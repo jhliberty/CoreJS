@@ -3,13 +3,6 @@
 #sidebar {
   background: #f5f5f5;
   box-shadow: -5px 0 10px rgba(0, 0, 0, .15) inset, -1px 0 1px rgba(0, 0, 0, .2) inset;
-  position: fixed;
-  width: $sidebarWidth;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
 
   .logo {
     background:

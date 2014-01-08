@@ -1,72 +1,68 @@
 var View    = require('view'),
-    Tooltip = require('view/tooltip');
+    Content = require('view/content'),
+    Sidebar = require('view/sidebar');
 
 var MainView = View.extend({
 
-    constructor: function () {
-        View.apply(this, arguments);
-        this.$container.one('click', '.spread', function () {
-            var $share = $('#share');
-            $share.appendTo('#main');
-            window.scrollTo(0, $share.offset().top);
-        });
+    constructor: ['router', function (router, options) {
+        View.call(this, options);
 
-        new Tooltip ({selector: '.pre i'});
-    },
+        new Content({$container: this.$container.find('#content')});
+        new Sidebar({$container: this.$container.find('#sidebar')});
 
-    update: ['model', View.prototype.update],
+        var eventType = 'ontouchstart' in window ? 'touchstart' : 'click',
+            isSidebarOpen;
+
+        var hide = function (e) {
+            if (e && $(e.target).closest('#sidebar').length) return;
+            this.$container
+                .removeClass('sidebar-open')
+                .off(eventType, hide);
+            isSidebarOpen = false;
+        }.bind(this);
+
+        this.$container.find('.toggleBtn').on(eventType, function (e) {
+            e.stopPropagation();
+            e.preventDefault();
+            if (isSidebarOpen) {
+                hide();
+            } else {
+                this.$container
+                    .addClass('sidebar-open')
+                    .on(eventType, hide);
+                isSidebarOpen = true;
+            }
+        }.bind(this));
+
+        router.on('route', hide, this);
+    }],
 
     template:
-        '<div id="sidebar"></div>' +
-        '<div id="overview">' +
-            '<div class="col">' +
-                '<div id="logoSquare"></div>' +
+        '<div class="container">' +
+            '<div class="wrapper">' +
+                '<div id="sidebar"></div>' +
+/*              '<div id="overview">' +
+                    '<div class="col">' +
+                        '<div id="logoSquare"></div>' +
+                    '</div>' +
+                    '<div class="col">' +
+                        '<p class="desc">Modular JavaScript Framework</p>' +
+                        '<div id="logo"></div>' +
+                        '{{#features}}<p>{{.}}</p>{{/features}}' +
+                    '</div>' +
+                    '<p class="pr">CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
+                    '<ul>' +
+                    '{{#items}}' +
+                        '<li>' +
+                            '<a href="#{{id}}" class="o{{id}}"><span>{{title}}</span></a>' +
+                        '</li>' +
+                    '{{/items}}' +
+                    '</ul>' +
+                '</div>' +*/
+                '<span class="toggleBtn"></span>' +
+                '<div id="content"></div>' +
             '</div>' +
-            '<div class="col">' +
-                '<p class="desc">Modular JavaScript Framework</p>' +
-                '<div id="logo"></div>' +
-                '{{#features}}<p>{{.}}</p>{{/features}}' +
-            '</div>' +
-            '<p class="pr">CoreJS solves problems that arise in&nbsp;every large web application:</p>' +
-            '<ul>' +
-            '{{#items}}' +
-                '<li>' +
-                    '<a href="#{{id}}" class="o{{id}}"><span>{{title}}</span></a>' +
-                '</li>' +
-            '{{/items}}' +
-            '</ul>' +
-        '</div>' +
-        '<div id="main">' +
-            '{{#items}}' +
-                '<h2 id="{{id}}">{{title}}</h2>' +
-                '{{{desc}}}' +
-                '{{#items}}' +
-                    '<h3 id="{{id}}">{{title}}</h3>' +
-                    '{{>items}}' +
-                '{{/items}}' +
-            '{{/items}}' +
-
-            '{{#combined}}' +
-                '<h2 id="{{id}}">{{title}}</h2>' +
-                '{{>items}}' +
-            '{{/combined}}' +
-
-            '<div class="conclusion">' +
-            '{{#conclusion}}' +
-                '<div>{{{.}}}</div>' +
-            '{{/conclusion}}' +
-            '</div>' +
-        '</div>' +
-        '<a href="https://github.com/CoreJS" class="gh" title="Fork me on GitHub">',
-
-    partial: {
-        items:
-            '{{#items}}' +
-                '{{#file}}<span class="file">{{file}}</span>{{/file}}' +
-                '{{#code}}<div class="pre">{{{code}}}</div>{{/code}}' +
-                '{{^code}}<div>{{{.}}}</div>{{/code}}' +
-            '{{/items}}'
-    }
+        '</div>'
 
 });
 
