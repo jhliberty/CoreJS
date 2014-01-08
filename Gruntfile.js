@@ -17,11 +17,11 @@ module.exports = function (grunt) {
         watch: {
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-                tasks: ['compass:server', 'autoprefixer']
+                tasks: ['compass:server', 'autoprefixer:dist']
             },
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-                tasks: ['copy:styles', 'autoprefixer']
+                tasks: ['copy:styles', 'autoprefixer:dist']
             },
             livereload: {
                 options: {
@@ -304,7 +304,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'concurrent:server',
-            'autoprefixer',
+            'autoprefixer:dist',
             'connect:livereload',
             'watch'
         ]);
@@ -314,7 +314,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'concurrent:test',
-            'autoprefixer',
+            'autoprefixer:dist',
             'connect:test',
             'karma:' + (target === 'single' ? 'unit' : 'continuous')
         ]);
@@ -324,7 +324,7 @@ module.exports = function (grunt) {
         'clean:dist',
         'useminPrepare',
         'concurrent:dist',
-        'autoprefixer',
+        'autoprefixer:dist',
         'concat',
         'cssmin',
         'uglify',
