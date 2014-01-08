@@ -147,6 +147,12 @@ module.exports = function (grunt) {
                     src: '{,*/}*.css',
                     dest: '.tmp/styles/'
                 }]
+            },
+            deploy: {
+                files: [{
+                    src: '<%= CoreJS.deploy %>/css/style.css',
+                    dest: '<%= CoreJS.deploy %>/css/style.css'
+                }]
             }
         },
         'bower-install': {
@@ -201,20 +207,13 @@ module.exports = function (grunt) {
             }
         },
         cssmin: {
-            // This task is pre-configured if you do not wish to use Usemin
-            // blocks for your CSS. By default, the Usemin block from your
-            // `index.html` will take care of minification, e.g.
-            //
-            //     <!-- build:css({.tmp,app}) styles/main.css -->
-            //
-            // dist: {
-            //     files: {
-            //         '<%= yeoman.dist %>/styles/main.css': [
-            //             '.tmp/styles/{,*/}*.css',
-            //             '<%= yeoman.app %>/styles/{,*/}*.css'
-            //         ]
-            //     }
-            // }
+            deploy: {
+                 files: {
+                     '<%= CoreJS.deploy %>/css/style.css': [
+                         '<%= CoreJS.deploy %>/css/style.css'
+                     ]
+                 }
+            }
         },
         htmlmin: {
             dist: {
@@ -344,10 +343,12 @@ module.exports = function (grunt) {
         grunt.task.run('commonjs-compiler');
     });
 
-    grunt.registerTask('deploy', function(){
-        grunt.task.run('compass:deploy');
-        grunt.task.run('compile');
-        grunt.task.run('copy:deploy_js');
-    })
+    grunt.registerTask('deploy', [
+        'compass:deploy',
+        'autoprefixer:deploy',
+        'cssmin:deploy',
+        'compile',
+        'copy:deploy_js'
+    ]);
 
 };
