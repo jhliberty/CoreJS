@@ -31,11 +31,11 @@ module.exports = {
                 {
                     title: 'Compiling',
                     items: [
-                        'Serving many files over a possibly slow connection could be slower than serving one file.',
+                        'Download speed can be improved over a slow connection by serving one file instead of many.',
                         'To compile your project and create a production build, run:',
                         c(0, 'grunt compile'),
-                        'During the compilation process, the compiler takes only required modules and minimizes your JavaScript.',
-                        'The dependency tree is being built starting from the entry module, all other modules do not get into the compiled code.',
+                        'During the compilation process, the compiler uses only the required modules and minimizes your JavaScript.',
+                        'The dependency tree is built starting from the entry module, no other modules are included in the compiled code.',
                         'CoreJS is as light as you want it to be.'
                     ]
                 }
@@ -43,7 +43,7 @@ module.exports = {
         },
         {
             title: 'Code Reuse',
-            'desc': 'You might have heard about ' + a('http://en.wikipedia.org/wiki/Don%27t_repeat_yourself', 'DRY principle') + ' and ' + a('http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)', 'inheritance') + ' as one of the ways to be DRY. There are several ways to do inheritance in JavaScript.',
+            'desc': 'You might have heard about the ' + a('http://en.wikipedia.org/wiki/Don%27t_repeat_yourself', 'DRY principle') + ' and ' + a('http://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)', 'inheritance') + ' as one of the ways to be DRY. There are several ways to do inheritance in JavaScript.',
             items: [
                 {
                     title: 'Inheritance',
@@ -105,13 +105,13 @@ module.exports = {
         },
         {
             title: 'Components Wiring',
-            'desc': 'There are many articles telling you why wiring up the components through the ' + a('http://www.yuiblog.com/blog/2006/06/01/global-domination/', 'global scope') + ' is bad, but ' + a('http://blog.millermedeiros.com/namespaces-are-old-school/', 'namespaces') + ' are ' + a('http://weblogs.asp.net/bleroy/archive/2012/09/03/namespaces-are-obsolete.aspx', 'evil') + ' too. If you have something like <span class="pre">app.header.menu.update()</span>, most probably you are doing something wrong. So, how are we going to wire up the components together? One of the solutions is Dependency Injection.',
+            'desc': 'There are many articles telling you why wiring up the components through the ' + a('http://www.yuiblog.com/blog/2006/06/01/global-domination/', 'global scope') + ' is bad, but ' + a('http://blog.millermedeiros.com/namespaces-are-old-school/', 'namespaces') + ' are ' + a('http://weblogs.asp.net/bleroy/archive/2012/09/03/namespaces-are-obsolete.aspx', 'evil') + ' too. If you have something like <span class="pre">app.header.menu.update()</span>, most probably you are doing something wrong. So, how are we going to wire up the components? One solution is Dependency Injection.',
             items: [
                 {
                     title: 'Dependency Injection',
                     items: [
-                        'Dependency Injection helps to wire up the components together without polluting the global scope or using namespaces.', '&nbsp;',
-                        'There are 2 ways to register a dependency:',
+                        'Dependency Injection helps to wire up the components without polluting the global scope or using namespaces.', '&nbsp;',
+                        'There are two ways to register a dependency:',
                         c(0,
                             'Core.register(\'dep\', [\'dependency\', \'example\']);\n',
                             'Core(\'dep\', [\'dependency\', \'example\']); // same as above'
@@ -119,7 +119,7 @@ module.exports = {
                         'Every component inherited from Core has the .register() method as well. For example, View being a child of Core can register dependencies as well:',
                         c(0, 'View.register(\'dep\', [1, 2, 3]); // same as Core.register(\'dep\', [1, 2, 3]);'),
                         'To inject dependencies into a method (when inheriting from Core or any child of Core), specify an <b>Injector Array</b> as any method.',
-                        '<b>Injector Array</b> is any array which elements are strings, except the last element, a function to inject dependencies into:',
+                        'An <b>Injector Array</b> is any array whose elements are strings, except the last element, which is a function to inject dependencies into:',
                         c(0,
                             '// Model inherits from Core',
                             'var Model = <b>Core.extend</b>({',
@@ -180,7 +180,7 @@ module.exports = {
         title: 'Combined Example',
         items: [
             'Let\'s bring it all together.',
-            'Despite all these features are nice to have, the maximum sweetness is achieved when all features of CoreJS are used all together (<span class="action"><span class="d">hover</span><span class="m">touch</span></span> the underlined code to see comments):',
+            'All of these are nice standalone features, but CoreJS is at its most powerful when all of its features are used  together (<span class="action"><span class="d">hover</span><span class="m">touch</span></span> the underlined code to see comments):',
             c('main.js',
                 'var Core = require(\'core\'),',
                 '    Router = require(\'router\'),',
