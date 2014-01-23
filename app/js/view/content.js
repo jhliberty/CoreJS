@@ -22,7 +22,7 @@ var MainView = View.extend({
                 '<div id="logoSquare"></div>' +
             '</div>' +
             '<div class="col">' +
-                '<p class="desc">Modular JavaScript Framework</p>' +
+                '<p class="desc">Super-lightweight library<br/>for building modular frameworks</p>' +
                 '<div id="logo"></div>' +
                 '{{#features}}<p>{{.}}</p>{{/features}}' +
             '</div>' +
