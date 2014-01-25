@@ -6,16 +6,16 @@ var Events = require('events'),
 
 var App = Events.extend({
 
-    constructor: function () {
-        Events.call(this);
+  constructor: function () {
+    Events.call(this);
 
-        App
-            .register('router', new Router)
-            .register('tpl', Mustache.render)
-            .register('model', data);
+    App
+      .register('router', new Router)
+      .register('tpl', Mustache.render)
+      .register('model', data);
 
-        new MainView({$container: $(document.body)});
-    }
+    new MainView({$container: $(document.body)});
+  }
 
 });
 
