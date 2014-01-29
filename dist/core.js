@@ -4,6 +4,7 @@
  * (c) Ivan Indamix; MIT License
  */
 
+// this is not included in the compiled code
 /** @define {boolean} */
 var DEV_MODE = true;
 
@@ -101,6 +102,7 @@ var DEV_MODE = true;
         return true;
     };
 
+    // this is not included in the compiled code
     if (DEV_MODE) {
         var script = document.scripts[document.scripts.length - 1],
             src = script.dataset ? script.dataset.main : script.getAttribute('data-main'),
@@ -110,6 +112,9 @@ var DEV_MODE = true;
             modules = {};
 
         modules[baseUrl + 'core.js'] = {exports: Core};
+
+        // for plugging in parsers, e.g. using with JSXTransformer or CoffeeScript etc.
+        var parse = function (s) { return s };
 
         var require = function (path) {
             if (!jsRe.test(path)) path += '.js';
@@ -124,7 +129,7 @@ var DEV_MODE = true;
                     mod = {exports: {}};
                     try {
                         eval('(function (module, exports) { ' +
-                            xhr.responseText +
+                            parse(xhr.responseText) +
                         '\n})(mod, mod.exports);//@ sourceURL=' + location.origin + '/' + path);
                     } catch (e) {
                         console.error('Error in module ' + path + ': ', e, e.stack);
