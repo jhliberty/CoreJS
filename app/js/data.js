@@ -1,4 +1,6 @@
-var slice = Array.prototype.slice;
+var slice = Array.prototype.slice,
+    commentRe = /(\/\/.*)|(\/\*.*\*\/)/,
+    spacesRe = /\s+/g;
 
 module.exports = {
     items: [
@@ -222,14 +224,14 @@ module.exports = {
     ],
 
     id: function () {
-        return this.title.replace(/\s+/g, '_');
+      return this.title.replace(spacesRe, '_');
     }
 };
 
 function c() {
     var lines = slice.call(arguments, 1);
     for (var i = lines.length; i--;) {
-        lines[i] = lines[i].replace(/(\/\/.*)|(\/\*.*\*\/)/, '<span class="comment">$1$2</span>');
+      lines[i] = lines[i].replace(commentRe, '<span class="comment">$1$2</span>');
     }
     return {
         code: lines.join('\n'),
