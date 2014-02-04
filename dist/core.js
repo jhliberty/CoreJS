@@ -8,7 +8,7 @@
 /** @define {boolean} */
 var DEV_MODE = true;
 
-(function () {
+(function (undefined) {
 
   var registry = {},
       slice = Array.prototype.slice,
@@ -70,7 +70,11 @@ var DEV_MODE = true;
   };
 
   Core.register = function (name, entity) {
-    registry[name] = entity;
+    if (typeof name === 'object' && entity === undefined) {
+      for (var key in name) if (name.hasOwnProperty(key)) registry[key] = name[key];
+    } else {
+      registry[name] = entity;
+    }
     return this;
   };
 

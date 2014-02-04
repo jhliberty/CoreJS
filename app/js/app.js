@@ -9,10 +9,11 @@ var App = Events.extend({
   constructor: function () {
     Events.call(this);
 
-    App
-      .register('router', new Router)
-      .register('tpl', Mustache.render)
-      .register('model', data);
+    App.register({
+      'router': new Router,
+      'tpl'   : Mustache.render,
+      'model' : data
+    });
 
     new MainView({$container: $(document.body)});
   }
