@@ -80,10 +80,12 @@ var DEV_MODE = true;
 
   Core.unregister = function (name) {
     delete registry[name];
+    return this;
   };
 
   Core.reset = function () {
     registry = {};
+    return this;
   };
 
   var wrapper = function (ia) {
