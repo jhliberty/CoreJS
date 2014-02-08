@@ -9,6 +9,7 @@
 var DEV_MODE = true;
 
 (function (undefined) {
+  'use strict';
 
   var registry = {},
       slice = Array.prototype.slice,
@@ -50,7 +51,7 @@ var DEV_MODE = true;
 
     C.prototype = parent.prototype;
     child.prototype = new C();
-    delete C.prototype; // unlink parent.prototype to prevent memory leaks
+    C.prototype = undefined; // unlink parent.prototype to prevent memory leaks
 
     var props = Object.getOwnPropertyNames(proto);
     for (var i = props.length; i--;) {
