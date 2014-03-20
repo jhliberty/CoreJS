@@ -6,9 +6,9 @@ var MainView = View.extend({
     constructor: function () {
         View.apply(this, arguments);
         this.$container.one('click', '.spread', function () {
-            var $share = $('#share');
-            $share.appendTo('#main');
-            window.scrollTo(0, $share.offset().top);
+            var $c = $('#content');
+            $('#share').appendTo($c);
+            $c.scrollTop($c[0].scrollHeight);
         });
 
         new Tooltip({selector: '.pre i'});
