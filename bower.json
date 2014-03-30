@@ -1,7 +1,13 @@
 {
   "name": "CoreJS",
-  "version": "0.0.0",
+  "version": "0.0.7",
   "homepage": "http://corejs.github.io",
+  "authors": [
+    {
+      "name": "Indamix",
+      "homepage": "http://indamix.github.io"
+    }
+  ],
   "devDependencies": {
     "jquery": "1.10.2",
     "mustache": "~0.7.3"
