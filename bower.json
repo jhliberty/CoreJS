@@ -9,14 +9,15 @@
     }
   ],
   "ignore": [
-    ".bowerrc",
     ".editorconfig",
+    ".gitignore",
     ".git",
     ".idea",
     ".jshintrc",
     "Gruntfile.js",
     "app",
     "karma.conf.js",
+    "package.json",
     "test"
   ],
   "license": "MIT"
