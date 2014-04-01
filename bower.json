@@ -1,6 +1,6 @@
 {
   "name": "CoreJS",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage": "http://corejs.github.io",
   "authors": [
     {
@@ -8,10 +8,6 @@
       "homepage": "http://indamix.github.io"
     }
   ],
-  "devDependencies": {
-    "jquery": "1.10.2",
-    "mustache": "~0.7.3"
-  },
   "ignore": [
     ".bowerrc",
     ".editorconfig",
