@@ -11,6 +11,11 @@ var Router = Events.extend({
   },
 
   onChange: function () {
+    if (!this.routes) {
+      this.trigger('route', location.hash.substr(1));
+      return;
+    }
+
     var url = location.hash.substr(2),
         route, match;
 
