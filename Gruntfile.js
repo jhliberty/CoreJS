@@ -313,8 +313,6 @@ module.exports = function (grunt) {
     grunt.registerTask('test', function (target) {
         grunt.task.run([
             'clean:server',
-            'concurrent:test',
-            'autoprefixer:dist',
             'connect:test',
             'karma:' + (target === 'single' ? 'unit' : 'continuous')
         ]);
