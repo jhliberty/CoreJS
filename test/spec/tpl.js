@@ -3,28 +3,6 @@ var tpl = require('../../tpl'),
 
 describe('tpl', function(){
 
-  var template =
-  '{{#items}}' +
-    '<div>' +
-    '{{title}}' +
-    '<ul>' +
-      '{{#items}}<li>{{.}}</li>{{/items}}' +
-    '</ul>' +
-    '[{{#test}}<p>&nbsp;&nbsp;&nbsp;&nbsp;-{{.}}</p>{{/test}}]'+
-    '</div>' +
-  '{{/items}}';
-
-  var tplWithSpacesAndNewlines =
-  '{{#items}}\
-    <div>\
-    {{title}}\
-    <ul>\
-      {{#items}}<li>{{.}}</li>{{/items}}\
-    </ul>\
-    [{{#test}}<p>&nbsp;&nbsp;&nbsp;&nbsp;-{{.}}</p>{{/test}}]\
-    </div>\
-  {{/items}}';
-
   var model = {
     items: [
       {
@@ -44,14 +22,36 @@ describe('tpl', function(){
     ]};
 
   it('should render like Mustache does', function () {
+    var template =
+    '{{#items}}' +
+      '<div>' +
+      '{{title}}' +
+      '<ul>' +
+        '{{#items}}<li>{{.}}</li>{{/items}}' +
+      '</ul>' +
+      '[{{#test}}<p>&nbsp;&nbsp;&nbsp;&nbsp;-{{.}}</p>{{/test}}]' +
+      '</div>' +
+    '{{/items}}';
+
     var html_i = tpl(template, model),
         html_m = mus(template, model);
     expect(html_i).toBe(html_m);
   });
 
-  it('should render templates with spaces and newlines', function () {
-    var html_i = tpl(tplWithSpacesAndNewlines, model),
-        html_m = mus(tplWithSpacesAndNewlines, model);
+  it('should render templates with newlines', function () {
+    var template =
+    '{{#items}}' +
+      '<div>\n' +
+      '{{title}}\n' +
+      '<ul>\n' +
+        '{{#items}}<li>{{.}}</li>{{/items}}\n' +
+      '</ul>\n' +
+      '[{{#test}}<p>&nbsp;&nbsp;&nbsp;&nbsp;-{{.}}</p>{{/test}}]\n' +
+      '</div>\n' +
+    '{{/items}}';
+
+    var html_i = tpl(template, model),
+        html_m = mus(template, model);
     expect(html_i).toBe(html_m);
   });
 });
