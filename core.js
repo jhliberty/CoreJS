@@ -137,7 +137,7 @@ var DEV_MODE = true;
         if (xhr.status === 200 || xhr.status === 0) { // 0: local files (Cordova / Phonegap etc.)
           mod = {exports: {}};
           try {
-            eval('(function (module, exports) { ' +
+            eval('(function (module, exports) {\n' +
               parse(xhr.responseText) +
             '\n})(mod, mod.exports);//# sourceURL=' + location.origin + '/' + path);
           } catch (e) {
